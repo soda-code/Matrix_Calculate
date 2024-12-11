@@ -2,7 +2,7 @@
 #include <vector>
 #include <iomanip> // 包含setw和setfill
 // 定义一个函数来添加两个矩阵
-std::vector<std::vector<int>> addMatrices(const std::vector<std::vector<int>>& matrixA, const std::vector<std::vector<int>>& matrixB) 
+std::vector<std::vector<int>> SUB_Matrices(const std::vector<std::vector<int>>& matrixA, const std::vector<std::vector<int>>& matrixB) 
 {
     std::vector<std::vector<int>> result(matrixA.size(), std::vector<int>(matrixA[0].size()));
     // 检查矩阵是否具有相同的维度
@@ -54,7 +54,7 @@ int main()
         {7, 8,6}
     };
 
-    std::vector<std::vector<int>> result = addMatrices(matrixA, matrixB);
+    std::vector<std::vector<int>> result = SUB_Matrices(matrixA, matrixB);
     // *************************************************************************打印结果
     std::cout << "Matrix A - Matrix B:" << std::endl;
     printMatrix(result);
