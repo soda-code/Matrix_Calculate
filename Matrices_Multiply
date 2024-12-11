@@ -1,0 +1,64 @@
+#include <iostream>
+#include <vector>
+#include <iomanip> // 包含setw和setfill
+// 定义一个函数来添加两个矩阵
+std::vector<std::vector<int>> multiplyMatrices(const std::vector<std::vector<int>>& matrixA, const std::vector<std::vector<int>>& matrixB)
+{
+    std::vector<std::vector<int>> result(matrixA.size(), std::vector<int>(matrixA[0].size()));
+
+     // 检查矩阵是否可以相乘
+    if (matrixA[0].size() != matrixB.size())
+    {
+        std::cerr << "Error: matrixA and matrixB  not same " << std::endl;
+        return  result;
+    }
+
+    // 执行矩阵乘法
+    for (size_t i = 0; i < matrixA.size(); ++i) {
+        for (size_t j = 0; j < matrixB[0].size(); ++j) {
+            for (size_t k = 0; k < matrixA[0].size(); ++k) {
+                result[i][j] += matrixA[i][k] * matrixB[k][j];
+            }
+        }
+    }
+
+    return result;
+}
+
+// 用于打印矩阵的函数
+void printMatrix(const std::vector<std::vector<int>>& matrix)
+{
+    for (const auto& row : matrix) 
+    {
+        for (const auto& element : row) 
+        {
+            std::cout << std::setw(10) <<element ;
+        }
+        std::cout << std::endl;
+    }
+}
+
+int main() 
+{
+    // 定义两个矩阵
+    std::vector<std::vector<int>> matrixA = 
+    {
+        {3, 2,2},
+        {3, 4,8},
+        {3, 5,7},
+    };
+
+    std::vector<std::vector<int>> matrixB = 
+    {
+        {3, 6,6},
+        {7, 8,6},
+        {3, 4,8}
+    };
+
+    std::vector<std::vector<int>> result = multiplyMatrices(matrixA, matrixB);
+    // *************************************************************************打印结果
+    std::cout << "Matrix A - Matrix B:" << std::endl;
+    printMatrix(result);
+
+    return 0;
+}
